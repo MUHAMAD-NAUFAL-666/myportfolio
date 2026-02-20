@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { useEffect, useState } from "react"
 
 export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
@@ -23,14 +23,20 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
   }, [onFinish])
 
   // Variants untuk animasi warp (kecepatan tinggi saat selesai)
-  const tunnelVariants = {
-    initial: { scale: 1, opacity: 1 },
-    exit: { 
-      scale: 15, 
-      opacity: 0,
-      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } 
-    }
-  }
+  const tunnelVariants: Variants = {
+  initial: {
+    scale: 1,
+    opacity: 1,
+  },
+  exit: {
+    scale: 15,
+    opacity: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+}
 
   return (
     <AnimatePresence>
@@ -66,7 +72,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
           <motion.div
             key={i}
             className="absolute w-[1px] h-[50px] bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
-            initial={{ y: -800, x: Math.random() * window.innerWidth, opacity: 0 }}
+            initial={{ y: -800, x: typeof window !== "undefined" ? Math.random() * window.innerWidth : 0, opacity: 0 }}
             animate={{ 
               y: 1200, 
               opacity: [0, 1, 0],
@@ -158,7 +164,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
         </div>
 
         {/* CSS for Grid Animation */}
-        <style jsx global>{`
+        <style >{`
           @keyframes gridMove {
             0% { background-position: 0 0, 0 0, 0 0; }
             100% { background-position: 0 0, 0 40px, 0 40px; }
