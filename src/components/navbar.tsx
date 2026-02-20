@@ -90,7 +90,7 @@ export default function Navbar() {
 
           {/* GitHub Button */}
           <a
-            href="https://github.com/username"
+            href="https://github.com/MUHAMAD-NAUFAL-666"
             target="_blank"
             className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 transition"
           >

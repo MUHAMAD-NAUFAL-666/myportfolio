@@ -108,11 +108,11 @@ export default function Hero() {
 
 </div>
             {/* Description */}
-            <p className="text-gray-400 text-lg max-w-xl leading-relaxed">
+            <p className="text-gray-400 text-lg max-w-md leading-relaxed">
               I build scalable web systems using{" "}
               <RotatingText
                 texts={["Laravel", "React", "Modern Architecture"]}
-                mainClassName="px-3 py-1 bg-white text-black rounded-md font-semibold"
+                mainClassName="px-3 py-2 bg-white text-black rounded-md font-semibold"
                 rotationInterval={2500}
               />
             </p>
@@ -131,7 +131,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 border-white/20 text-white hover:bg-white/10 transition-all duration-300"
+                className="px-8 py-6 border-white/20 text-amber-500 hover:bg-white/10 transition-all duration-300"
               >
                 <Download className="mr-2 w-4 h-4" />
                 Download CV
