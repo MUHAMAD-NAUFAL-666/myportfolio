@@ -6,11 +6,42 @@ import Lanyard from "@/components/lanyard"
 import RotatingText from "@/components/RotatingText"
 import { ArrowRight, Download, ChevronDown } from "lucide-react"
 import TextType from "./TextType"
+import { PDFDownloadLink } from "@react-pdf/renderer"
+import { CVDocument } from "./CVDocument"
+
 
 export default function Hero() {
 
+   const handleDownload = async () => {
+  const element = document.getElementById("cv-section")
+  if (!element) {
+    console.log("Element tidak ditemukan")
+    return
+  }
+
+  const html2pdf = (await import("html2pdf.js")).default
+
+  const opt = {
+    margin: 0.5,
+    filename: "Muhammad-Raihan-CV.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: {
+      unit: "in",
+      format: "a4",
+      orientation: "portrait"
+    }
+  }
+
+  html2pdf().set(opt).from(element).save()
+}
+
+
   return (
-    <section className="relative min-h-screen w-full bg-[#050505] text-white overflow-hidden">
+    <section
+  id="cv-section"
+  className="relative min-h-screen w-full bg-[#050505] text-white overflow-hidden"
+>
 
       {/* ===== BACKGROUND LIGHTING (STATIC & RINGAN) ===== */}
       <div className="absolute inset-0 -z-10">
@@ -39,7 +70,7 @@ export default function Hero() {
         sm:w-[320px] sm:h-[420px]
         md:w-[420px] md:h-[520px]
         rounded-3xl 
-        bg-white/5 backdrop-blur-xl 
+        bg-slate-300 backdrop-blur-xl 
         border border-white/10 
         shadow-[0_40px_80px_rgba(0,0,0,0.6)]
       "
@@ -128,14 +159,21 @@ export default function Hero() {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
 
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-8 py-6 border-white/20 text-amber-500 hover:bg-white/10 transition-all duration-300"
-              >
-                <Download className="mr-2 w-4 h-4" />
-                Download CV
-              </Button>
+              <PDFDownloadLink
+  document={<CVDocument />}
+  fileName="Muhammad-Naufal-CV.pdf"
+>
+  {({ loading }) => (
+    <Button
+      size="lg"
+      variant="outline"
+      className="px-8 py-6 border-white/20 text-amber-500 hover:bg-white/10 transition-all duration-300"
+    >
+      <Download className="mr-2 w-4 h-4" />
+      {loading ? "Generating..." : "Download CV"}
+    </Button>
+  )}
+</PDFDownloadLink>
 
             </div>
 
