@@ -114,6 +114,75 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg,
+      #355c67,
+      #264653,
+      #1b3a4b);
+
+  color: white;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* glowing background effect */
+
+.loader::before {
+  content: "";
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  background: radial-gradient(circle,
+      rgba(0, 255, 255, 0.25),
+      transparent 70%);
+
+  filter: blur(120px);
+  animation: glowMove 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove {
+
+  0% {
+    transform: translate(-120px, -120px);
+  }
+
+  100% {
+    transform: translate(120px, 120px);
+  }
+
+}
+
+/* SVG styling */
+
+.loader svg {
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.5));
+}
+
+/* text logo */
+
+.logoText {
+  margin-top: 20px;
+  letter-spacing: 14px;
+  font-size: 22px;
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

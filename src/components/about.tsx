@@ -45,17 +45,25 @@ export default function About() {
 
   return (
     <section
-      id="about"
-      className="relative py-32 px-6 md:px-16 overflow-hidden
-      bg-gradient-to-b 
-      from-white via-purple-50 to-white
-      dark:from-[#0b1120] dark:via-[#0f172a] dark:to-[#0b1120]
-      text-black dark:text-white
-      transition-colors duration-500"
+       id="cv-section"
+  className="relative min-h-screen w-full overflow-hidden
+  bg-gradient-to-b 
+  from-white via-purple-50 to-white
+  dark:from-[#0b1120] dark:via-[#0f172a] dark:to-[#0b1120]
+  text-foreground
+  transition-colors duration-500"
     >
-      {/* Glow Background */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-400/30 dark:bg-cyan-500/20 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-pink-400/20 dark:bg-purple-500/20 rounded-full blur-[180px] pointer-events-none" />
+      {/* ===== Background Glow ===== */}
+      <div className="absolute inset-0 -z-10">
+
+        {/* Dark Glow */}
+        <div className="hidden dark:block absolute -top-40 -left-40 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[180px]" />
+        <div className="hidden dark:block absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-pink-500/15 rounded-full blur-[180px]" />
+
+        {/* Light Glow */}
+        <div className="dark:hidden absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-[180px]" />
+        <div className="dark:hidden absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-pink-200/30 rounded-full blur-[180px]" />
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 60 }}
@@ -65,15 +73,20 @@ export default function About() {
         className="relative z-10 max-w-6xl mx-auto"
       >
         <div
-          className="backdrop-blur-xl bg-white/60 dark:bg-white/5 
-          border border-white/30 dark:border-white/10
-          rounded-3xl shadow-2xl
+          className="
+          backdrop-blur-xl 
+          bg-card/60
+          border border-border
+          rounded-3xl 
+          shadow-xl
           p-10 md:p-16
           grid md:grid-cols-2 gap-14 items-center
-          transition-colors duration-500"
+        "
         >
-          {/* LEFT SIDE */}
+
+          {/* ===== LEFT SIDE ===== */}
           <div>
+
             <TrueFocus
               sentence="About Me"
               manualMode={false}
@@ -90,51 +103,60 @@ export default function About() {
                 animateBy="words"
                 direction="top"
                 onAnimationComplete={handleAnimationComplete}
-                className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-500"
+                className="text-base md:text-lg text-muted-foreground leading-relaxed"
               />
             </div>
 
-            {/* STATS COUNTER */}
+            {/* ===== STATS ===== */}
             <div className="grid grid-cols-3 gap-6 mt-10">
+
               <div>
-                <h4 className="text-3xl font-bold text-cyan-500">
+                <h4 className="text-3xl font-bold text-primary">
                   <Counter end={3} suffix="+" />
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   Years Learning
                 </p>
               </div>
 
               <div>
-                <h4 className="text-3xl font-bold text-cyan-500">
+                <h4 className="text-3xl font-bold text-primary">
                   <Counter end={10} suffix="+" />
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   Projects Built
                 </p>
               </div>
 
               <div>
-                <h4 className="text-3xl font-bold text-cyan-500">
+                <h4 className="text-3xl font-bold text-primary">
                   <Counter end={15} suffix="+" />
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   DB Tables Designed
                 </p>
               </div>
+
             </div>
           </div>
 
-          {/* RIGHT SIDE CARD */}
+          {/* ===== RIGHT SIDE CARD ===== */}
           <motion.div
-            whileHover={{ rotateY: 10, rotateX: 5 }}
+            whileHover={{ rotateY: 8, rotateX: 4 }}
             transition={{ type: "spring", stiffness: 200 }}
             className="relative perspective-1000"
           >
             <div
-              className="bg-gradient-to-br from-purple-500 to-cyan-500 
-              rounded-2xl p-8 text-white shadow-2xl 
-              transform-gpu transition-all duration-500"
+              className="
+              bg-gradient-to-br 
+              from-primary 
+              to-purple-500 
+              rounded-2xl 
+              p-8 
+              text-primary-foreground 
+              shadow-xl
+              transition-all duration-500
+            "
             >
               <h3 className="text-2xl font-semibold mb-4">
                 What I Build
@@ -148,6 +170,7 @@ export default function About() {
               </ul>
             </div>
           </motion.div>
+
         </div>
       </motion.div>
     </section>
