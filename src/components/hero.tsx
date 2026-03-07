@@ -12,31 +12,6 @@ import { CVDocument } from "./CVDocument"
 
 export default function Hero() {
 
-   const handleDownload = async () => {
-  const element = document.getElementById("cv-section")
-  if (!element) {
-    console.log("Element tidak ditemukan")
-    return
-  }
-
-  const html2pdf = (await import("html2pdf.js")).default
-
-  const opt = {
-    margin: 0.5,
-    filename: "Muhammad-Raihan-CV.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: {
-      unit: "in",
-      format: "a4",
-      orientation: "portrait"
-    }
-  }
-
-  html2pdf().set(opt).from(element).save()
-}
-
-
   return (
    <section
       id="cv-section"

@@ -84,28 +84,34 @@ export default function LoadingScreen({ onFinish }: Props) {
 
         {/* Outer frame */}
         <path
-          ref={el => el && pathsRef.current.push(el)}
-          d="M50 170 L50 30 L150 170 L150 30"
-          stroke="url(#grad)"
-          strokeWidth="1"
-          opacity="0.4"
-        />
+  ref={(el) => {
+    if (el) pathsRef.current.push(el)
+  }}
+  d="M50 170 L50 30 L150 170 L150 30"
+  stroke="url(#grad)"
+  strokeWidth="1"
+  opacity="0.4"
+/>
 
         {/* middle line */}
-        <path
-          ref={el => el && pathsRef.current.push(el)}
-          d="M70 160 L70 60 L130 160 L130 40"
-          stroke="url(#grad)"
-          strokeWidth="2"
-        />
+       <path
+  ref={(el) => {
+    if (el) pathsRef.current.push(el)
+  }}
+  d="M70 160 L70 60 L130 160 L130 40"
+  stroke="url(#grad)"
+  strokeWidth="2"
+/>
 
         {/* main logo */}
         <path
-          ref={el => el && pathsRef.current.push(el)}
-          d="M60 160 L60 40 L140 160 L140 40"
-          stroke="url(#grad)"
-          strokeWidth="3"
-        />
+  ref={(el) => {
+    if (el) pathsRef.current.push(el)
+  }}
+  d="M60 160 L60 40 L140 160 L140 40"
+  stroke="url(#grad)"
+  strokeWidth="3"
+/>
 
         <defs>
           <linearGradient id="grad" x1="0" y1="0" x2="200" y2="200">

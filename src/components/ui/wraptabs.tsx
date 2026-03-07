@@ -55,7 +55,9 @@ export default function WrapTabs({ tabs, defaultActiveId, className }: WrapTabsP
         {tabs.map((t, i) => (
           <button
             key={t.id}
-            ref={(el) => (refs.current[i] = el)}
+            ref={(el) => {
+  refs.current[i] = el
+}}
             id={`tab-${t.id}`}
             role="tab"
             aria-selected={activeId === t.id}
