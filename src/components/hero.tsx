@@ -9,74 +9,79 @@ import TextType from "./TextType"
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import { CVDocument } from "./CVDocument"
 
-
 export default function Hero() {
 
   return (
-   <section
+    <section
       id="cv-section"
-  className="relative min-h-screen w-full overflow-hidden
-  bg-gradient-to-b 
-  from-white via-purple-50 to-white
-  dark:from-[#0b1120] dark:via-[#0f172a] dark:to-[#0b1120]
-  text-foreground
-  transition-colors duration-500"
+      className="relative min-h-screen w-full overflow-hidden
+      bg-gradient-to-b 
+      from-white via-purple-50 to-white
+      dark:from-[#0b1120] dark:via-[#0f172a] dark:to-[#0b1120]
+      text-foreground
+      transition-colors duration-500"
     >
 
-      {/* ================= BACKGROUND GLOW ================= */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10">
 
-        {/* Dark Mode Glow */}
-        <div className="hidden dark:block absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-cyan-500/15 blur-[160px] rounded-full" />
-        <div className="hidden dark:block absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/10 blur-[160px] rounded-full" />
+        {/* Dark */}
+        <div className="hidden dark:block absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-cyan-500/15 blur-[120px] rounded-full" />
+        <div className="hidden dark:block absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full" />
 
-        {/* Light Mode Glow */}
-        <div className="dark:hidden absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-blue-200/40 blur-[160px] rounded-full" />
-        <div className="dark:hidden absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-200/30 blur-[160px] rounded-full" />
+        {/* Light */}
+        <div className="dark:hidden absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-200/40 blur-[120px] rounded-full" />
+        <div className="dark:hidden absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-200/30 blur-[120px] rounded-full" />
+
       </div>
 
-      {/* ================= MAIN CONTAINER ================= */}
+      {/* CONTAINER */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 min-h-screen flex items-center">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center w-full">
 
-          {/* ================= LANYARD CARD ================= */}
+          {/* CARD */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center justify-center order-1 md:order-none"
+            transition={{ duration: 0.6 }}
+            className="flex items-center justify-center"
           >
-            <motion.div
-              whileHover={{ rotateY: 8, rotateX: -4 }}
-              transition={{ type: "spring", stiffness: 120 }}
+
+            <div
               className="
-                relative 
-                w-[280px] h-[360px] 
-                sm:w-[320px] sm:h-[420px]
-                md:w-[420px] md:h-[520px]
-                rounded-3xl 
-                bg-card/60 
-                backdrop-blur-xl 
-                border border-border
-                shadow-xl
+              group
+              relative
+              w-[280px] h-[360px]
+              sm:w-[320px] sm:h-[420px]
+              md:w-[420px] md:h-[520px]
+              rounded-3xl
+              bg-card/60
+              backdrop-blur-xl
+              border border-border
+              shadow-xl
+              transition-transform duration-500
+              hover:rotate-y-6 hover:-rotate-x-3
               "
               style={{ transformStyle: "preserve-3d" }}
             >
+
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-200 to-blue-400 pointer-events-none" />
 
               <div className="flex items-center justify-center h-full">
                 <Lanyard position={[0, 0, 20]} gravity={[0, -35, 0]} />
               </div>
-            </motion.div>
+
+            </div>
+
           </motion.div>
 
-          {/* ================= TEXT CONTENT ================= */}
+          {/* TEXT */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8 order-2 md:order-none text-center md:text-left"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="space-y-8 text-center md:text-left"
           >
 
             {/* Badge */}
@@ -84,7 +89,7 @@ export default function Hero() {
               AI Engineer • Fullstack Developer
             </div>
 
-            {/* Heading */}
+            {/* Title */}
             <div className="flex flex-col space-y-2">
 
               <TextType
@@ -134,7 +139,7 @@ export default function Hero() {
               />
             </p>
 
-            {/* CTA Buttons */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 pt-4 justify-center md:justify-start">
 
               <Button
@@ -164,17 +169,15 @@ export default function Hero() {
             </div>
 
           </motion.div>
+
         </div>
+
       </div>
 
-      {/* ================= SCROLL INDICATOR ================= */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
-      >
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <ChevronDown className="text-muted-foreground w-6 h-6" />
-      </motion.div>
+      </div>
 
     </section>
   )

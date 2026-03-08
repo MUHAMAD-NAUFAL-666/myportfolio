@@ -89,8 +89,6 @@ export default function PersonalAccount() {
     mengembangkan kemampuan dengan mempelajari teknologi baru serta
     membangun proyek nyata untuk meningkatkan kualitas solusi yang saya buat.
   </p>
-
-
             <ul className="space-y-2 mt-4">
               <li>✓ Focused on frontend, backend, and scalable systems</li>
                 <li>✓ Passionate about clean code and user-friendly design</li>
