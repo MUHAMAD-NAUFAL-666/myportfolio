@@ -12,6 +12,7 @@ import TechStack from "./components/tech-stack"
 import Contact from "./components/contact"
 import CaseStudy from "./components/case-study"
 import LoadingScreen from "./components/loading-screen"
+import PersonalAccount from "./components/personal-account"
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -30,6 +31,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <PersonalAccount />
       <TechStack />
       <Projects />
       <CaseStudy />
