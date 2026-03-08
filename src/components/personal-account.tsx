@@ -23,7 +23,7 @@ export default function PersonalAccount() {
         {/* Header */}
         <div className="flex justify-between text-sm text-neutral-600 mb-10">
           <span className="font-medium">Muhamad Naufal</span>
-          <span>Creative Portfolio</span>
+          <span>Portfolio By Naufal</span>
         </div>
 
         {/* Title */}
@@ -75,24 +75,27 @@ export default function PersonalAccount() {
           {/* RIGHT TEXT */}
           <div className="space-y-6 text-neutral-700 leading-relaxed">
 
-            <p>
-              Aku mulai membangun personal branding dan aktif membuat konten sejak
-              akhir 2022. Dalam waktu kurang lebih satu tahun aku berhasil
-              mencapai lebih dari <strong>140 ribu followers</strong> di TikTok
-              dan Instagram.
-            </p>
+             <p>
+    Saya adalah seorang web developer yang memiliki minat besar dalam
+    membangun aplikasi web modern dan scalable. Saya senang menciptakan
+    pengalaman pengguna yang bersih, cepat, dan responsif melalui desain
+    antarmuka yang sederhana namun fungsional.
+  </p>
 
-            <p>
-              Selama perjalanan itu aku juga sudah bekerja sama dengan berbagai
-              brand dari yang baru merintis sampai brand besar, untuk membantu
-              mereka meningkatkan engagement dan awareness lewat konten yang aku
-              buat.
-            </p>
+  <p>
+    Dalam proses belajar dan pengembangan, saya telah mengerjakan berbagai
+    proyek menggunakan teknologi modern seperti <strong>React</strong>,
+    <strong> Laravel</strong>, dan <strong>Tailwind CSS</strong>. Saya terus
+    mengembangkan kemampuan dengan mempelajari teknologi baru serta
+    membangun proyek nyata untuk meningkatkan kualitas solusi yang saya buat.
+  </p>
+
 
             <ul className="space-y-2 mt-4">
-              <li>✓ 140K+ followers combined</li>
-              <li>✓ Strong Gen Z audience (18–30)</li>
-              <li>✓ Content niche: remote work, freelance, digital income</li>
+              <li>✓ Focused on frontend, backend, and scalable systems</li>
+                <li>✓ Passionate about clean code and user-friendly design</li>
+                <li>✓ Experienced with React, Laravel, and Tailwind CSS</li>
+                <li>✓ Continuously learning and building real-world projects</li>
             </ul>
 
             {/* CTA */}
