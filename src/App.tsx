@@ -12,6 +12,7 @@ import Contact from "./components/contact"
 import CaseStudy from "./components/case-study"
 import LoadingScreen from "./components/loading-screen"
 import PersonalAccount from "./components/personal-account"
+import SplashCursor from "./components/SplashCursor"
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SplashCursor />
       <Navbar />
       <Hero />
       <About />
