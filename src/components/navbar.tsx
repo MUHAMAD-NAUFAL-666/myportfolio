@@ -1,13 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Moon, Sun, Menu, X, Github } from "lucide-react"
+import { Moon, Sun, Github } from "lucide-react"
 import { cn } from "@/lib/utils"
+import StaggeredMenu from "@/components/StaggeredMenu"
 
 export default function Navbar() {
   const [dark, setDark] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
   const [time, setTime] = useState(new Date())
 
   // Dark Mode Toggle
@@ -41,14 +41,28 @@ export default function Navbar() {
     second: "2-digit",
   })
 
+  // Desktop Menu
   const items = [
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ]
 
+  // Mobile Staggered Menu Items
+  const menuItems = [
+    { label: "About", ariaLabel: "Go to about section", link: "#about" },
+    { label: "Projects", ariaLabel: "Go to projects section", link: "#projects" },
+    { label: "Contact", ariaLabel: "Go to contact section", link: "#contact" },
+  ]
+
+  const socialItems = [
+    { label: "GitHub", link: "https://github.com/MUHAMAD-NAUFAL-666" },
+  ]
+
   return (
     <header className="fixed top-6 left-0 w-full flex justify-center z-50 px-4">
+
+      {/* NAVBAR */}
       <nav
         className={cn(
           "w-full max-w-5xl flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300",
@@ -83,12 +97,12 @@ export default function Navbar() {
         {/* Right Section */}
         <div className="flex items-center gap-3">
 
-          {/* Realtime Clock */}
+          {/* Clock */}
           <div className="hidden lg:block text-xs text-zinc-500 dark:text-zinc-400 font-medium">
             {formattedTime}
           </div>
 
-          {/* GitHub Button */}
+          {/* GitHub */}
           <a
             href="https://github.com/MUHAMAD-NAUFAL-666"
             target="_blank"
@@ -98,7 +112,7 @@ export default function Navbar() {
             GitHub
           </a>
 
-          {/* Dark Toggle */}
+          {/* Dark Mode */}
           <button
             onClick={() => setDark(!dark)}
             className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition"
@@ -106,48 +120,39 @@ export default function Navbar() {
             {dark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
-          {/* Mobile Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition"
-          >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          {/* MOBILE STAGGERED MENU */}
+         <div className="md:hidden">
+  <StaggeredMenu
+  position="right"
+  items={menuItems}
+  socialItems={socialItems}
+  displaySocials
+  displayItemNumbering={true}
+
+  // 🌌 DEPTH COLOR (layered luxury)
+  colors={[
+    "#020617",
+    "#020617",
+    "#0a0f1c",
+    "#111827"
+  ]}
+
+  // 🎯 BUTTON
+  menuButtonColor="#020617"
+  openMenuButtonColor="#ffffff"
+
+  // 💎 ACCENT (glow cyan)
+  accentColor="#38bdf8"
+
+  logoUrl="/logo.svg"
+
+  changeMenuColorOnOpen={true}
+  isFixed={true}
+  closeOnClickAway={true}
+/>
+</div>
         </div>
       </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "absolute top-20 w-full max-w-sm transition-all duration-300 md:hidden",
-          mobileOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        )}
-      >
-        <div className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-4 shadow-xl">
-          {items.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => setMobileOpen(false)}
-              className="block px-4 py-3 rounded-xl text-zinc-700 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/10 transition"
-            >
-              {item.label}
-            </a>
-          ))}
-
-          {/* Mobile GitHub */}
-          <a
-            href="https://github.com/username"
-            target="_blank"
-            className="mt-2 flex items-center gap-2 px-4 py-3 rounded-xl text-zinc-700 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/10 transition"
-          >
-            <Github size={16} />
-            GitHub
-          </a>
-        </div>
-      </div>
     </header>
   )
 }
