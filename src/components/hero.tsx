@@ -49,30 +49,40 @@ export default function Hero() {
           >
 
             <div
-              className="
-              group
-              relative
-              w-[280px] h-[360px]
-              sm:w-[320px] sm:h-[420px]
-              md:w-[420px] md:h-[520px]
-              rounded-3xl
-              bg-card/60
-              backdrop-blur-xl
-              border border-border
-              shadow-xl
-              transition-transform duration-500
-              hover:rotate-y-6 hover:-rotate-x-3
-              "
-              style={{ transformStyle: "preserve-3d" }}
-            >
+  className="
+  group
+  relative
+  w-[280px] h-[360px]
+  sm:w-[320px] sm:h-[420px]
+  md:w-[420px] md:h-[520px]
+  rounded-3xl
+  bg-black/40
+  backdrop-blur-xl
+  border border-white/10
+  shadow-[0_0_40px_rgba(0,255,255,0.15)]
+  transition-all duration-500
+  hover:rotate-y-6 hover:-rotate-x-3 hover:scale-105
+  "
+  style={{ transformStyle: "preserve-3d" }}
+>
+  {/* 🔥 MAGIC GLOW BACKGROUND */}
+  <div className="absolute inset-0 rounded-3xl overflow-hidden">
+    
+    {/* gradient neon */}
+    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-fuchsia-500/10 to-purple-500/20" />
+    
+    {/* blur glow */}
+    <div className="absolute -inset-10 bg-cyan-500/20 blur-[80px] opacity-70 group-hover:opacity-100 transition duration-500" />
+    
+    {/* animated light (optional subtle) */}
+    <div className="absolute inset-0 opacity-30 animate-pulse bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
+  </div>
 
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-200 to-blue-400 pointer-events-none" />
-
-              <div className="flex items-center justify-center h-full">
-                <Lanyard position={[0, 0, 20]} gravity={[0, -35, 0]} />
-              </div>
-
-            </div>
+  {/* CONTENT */}
+  <div className="relative z-10 flex items-center justify-center h-full">
+    <Lanyard position={[0, 0, 20]} gravity={[0, -35, 0]} />
+  </div>
+</div>
 
           </motion.div>
 
